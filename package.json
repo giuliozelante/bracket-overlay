@@ -1,0 +1,36 @@
+{
+  "name": "bracket-overlay",
+  "version": "1.0.0",
+  "author": "Giulio Zelante",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giuliozelante/bracket-overlay.git"
+  },
+  "devDependencies": {
+    "parcel": "latest"
+  },
+  "bugs": {
+    "url": "https://github.com/giuliozelante/bracket-overlay/issues"
+  },
+  "description": "Bracket Overlay for OBS/StreamLabs",
+  "homepage": "https://github.com/giuliozelante/bracket-overlay#readme",
+  "keywords": [
+    "obs",
+    "streamlabs",
+    "rxjs",
+    "typescript",
+    "html",
+    "sass",
+    "bracket",
+    "overlay"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "source": "src/index.htm",
+  "dependencies": {
+    "lit-html": "^3.1.3"
+  }
+}
