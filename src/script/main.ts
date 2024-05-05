@@ -1,6 +1,7 @@
 import { html, render } from 'lit-html';
 
 const headers = new Headers();
+headers.append('Authorization', 'Bearer 1d846dcb32805df38bf61474ad2e5264');
 
 const body = JSON.stringify({
   query: `query PhaseGroupSets($phaseGroupId: ID!, $page:Int!, $perPage:Int!){

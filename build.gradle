@@ -2,6 +2,7 @@ plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("io.micronaut.application") version "4.3.6"
     id("io.micronaut.aot") version "4.3.6"
+    id("com.apollographql.apollo").version("2.5.14")
 }
 
 version = "0.1"
@@ -19,9 +20,11 @@ dependencies {
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     implementation("io.micronaut.views:micronaut-views-fieldset")
     implementation("io.micronaut.views:micronaut-views-thymeleaf")
+    implementation("com.apollographql.apollo:apollo-runtime:2.5.14")
     compileOnly("io.micronaut:micronaut-http-client")
     compileOnly("org.projectlombok:lombok")
     runtimeOnly("ch.qos.logback:logback-classic")
+    runtimeOnly("org.webjars.npm:github-com-bigskysoftware-htmx:1.9.12")
     testImplementation("io.micronaut:micronaut-http-client")
 }
 
@@ -62,5 +65,12 @@ micronaut {
 tasks.named("dockerfileNative") {
     jdkVersion = "21"
 }
+
+apollo {
+  service("service") {
+    packageName.set("it.giuliozelante")
+  }
+}
+
 
 
