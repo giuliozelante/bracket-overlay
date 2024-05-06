@@ -1,0 +1,8 @@
+<title>Home</title>
+<ul>
+  <li th:each="tournament: ${tournaments}">
+    <a hx-get="${tournament.link}"
+      ><span th:text="${tournament.name}"></span
+    ></a>
+  </li>
+</ul>

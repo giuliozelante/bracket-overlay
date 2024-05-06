@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<html
-  lang="en"
-  th:fragment="layout(title, content)"
-  xmlns:th="http://www.thymeleaf.org"
->
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,8 +8,17 @@
       type="text/javascript"
       th:src="@{/webjars/htmx.org/dist/htmx.min.js}"
     ></script>
+    <script
+      type="text/javascript"
+      th:src="@{/webjars/htmx.org/dist/ext/head-support.js}"
+    ></script>
   </head>
   <body>
-    <div class="container" th:replace="${content}">Content goes here</div>
+    <nav>
+      <ul>
+        <li><a hx-get="/home" hx-target="#container">Home</a></li>
+      </ul>
+    </nav>
+    <div id="container"></div>
   </body>
 </html>

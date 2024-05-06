@@ -1,21 +1,12 @@
 
 package it.giuliozelante.model;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-public class CacheControl {
-
+@Data
+@EqualsAndHashCode(callSuper = false)
+public class CacheControl extends Base {
     public long version;
     public Object hints;
-    private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
 }

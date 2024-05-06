@@ -6,9 +6,5 @@ import io.micronaut.context.annotation.ConfigurationProperties;
 public interface GraphQLConfig {
     String getEndpoint();
 
-    void setEndpoint(String endpoint);
-
     String getToken();
-
-    void setToken(String token);
 }

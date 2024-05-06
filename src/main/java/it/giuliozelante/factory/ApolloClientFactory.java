@@ -11,8 +11,12 @@ import okhttp3.OkHttpClient;
 @Factory
 public class ApolloClientFactory {
 
+    private final GraphQLConfig config;
+
     @Inject
-    private GraphQLConfig config;
+    public ApolloClientFactory(GraphQLConfig config) {
+        this.config = config;
+    }
 
     public ApolloClient apolloClient() {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
