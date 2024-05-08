@@ -1,10 +1,10 @@
 apollo:
-    schema-file-path: schema.json
+  schema-file-path: schema.json
 graphql:
-    endpoint: https://api.start.gg/gql/alpha
-    token: ${GRAPHQL_TOKEN}
+  endpoint: https://api.start.gg/gql/alpha
+  token: ${GRAPHQL_TOKEN}
 jackson:
-    serialization-inclusion: ALWAYS
+  serialization-inclusion: ALWAYS
 micronaut:
-    application:
-        name: bracket-overlay
+  application:
+    name: bracket-overlay

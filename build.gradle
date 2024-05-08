@@ -2,6 +2,7 @@ plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("io.micronaut.application") version "4.3.6"
     id("io.micronaut.aot") version "4.3.6"
+    id("com.diffplug.spotless") version "6.23.3"
     id("com.apollographql.apollo").version("2.5.14")
 }
 
@@ -19,7 +20,6 @@ dependencies {
     implementation("io.micronaut.graphql:micronaut-graphql")
     implementation "org.antlr:antlr4-runtime:4.9.2"
     implementation("io.micronaut.serde:micronaut-serde-jackson")
-    implementation("io.micronaut.views:micronaut-views-fieldset")
     implementation("io.micronaut.views:micronaut-views-thymeleaf")
     implementation("com.apollographql.apollo:apollo-runtime:2.5.14")
     compileOnly("io.micronaut:micronaut-http-client")
@@ -71,6 +71,3 @@ apollo {
     packageName.set("it.giuliozelante")
   }
 }
-
-
-

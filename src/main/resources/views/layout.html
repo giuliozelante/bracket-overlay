@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html
+  th:fragment="layout (title, container)"
+  xmlns:th="http://www.thymeleaf.org"
+  lang="en"
+>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +23,6 @@
         <li><a hx-get="/home" hx-target="#container">Home</a></li>
       </ul>
     </nav>
-    <div id="container"></div>
+    <div id="container" th:replace="${container}"></div>
   </body>
 </html>
