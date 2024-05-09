@@ -18,7 +18,6 @@ dependencies {
     annotationProcessor("io.micronaut:micronaut-http-validation")
     annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
     implementation("io.micronaut.graphql:micronaut-graphql")
-    implementation "org.antlr:antlr4-runtime:4.9.2"
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     implementation("io.micronaut.views:micronaut-views-thymeleaf")
     implementation("com.apollographql.apollo:apollo-runtime:2.5.14")
