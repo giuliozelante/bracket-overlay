@@ -34,7 +34,7 @@ public class TournamentsController {
     @View("tournaments/home.html")
     @Produces(MediaType.TEXT_HTML)
     @ExecuteOn(TaskExecutors.BLOCKING)
-    public Map<String, Object> findAll() {
+    public Map<String, Object> findAll(Model model) {
         TournamentsByOwnerQuery query = TournamentsByOwnerQuery.builder().ownerId("1802421").perPage(500).build();
         Map<String, Object> initialHtml = new HashMap<>();
         apolloClient.query(query).enqueue(new ApolloCall.Callback<TournamentsByOwnerQuery.Data>() {
