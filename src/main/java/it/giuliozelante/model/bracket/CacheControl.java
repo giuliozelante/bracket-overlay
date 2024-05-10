@@ -1,5 +1,5 @@
 
-package it.giuliozelante.model;
+package it.giuliozelante.model.bracket;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

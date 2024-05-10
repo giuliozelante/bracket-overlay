@@ -1,17 +1,14 @@
 
-package it.giuliozelante.model;
-
-import java.util.List;
+package it.giuliozelante.model.bracket;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-
-public class Node extends Base {
+public class Entrant extends Base {
 
     public long id;
-    public List<Slot> slots;
+    public String name;
 
 }

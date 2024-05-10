@@ -1,4 +1,4 @@
-package it.giuliozelante.model;
+package it.giuliozelante.model.bracket;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

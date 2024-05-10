@@ -1,5 +1,5 @@
 
-package it.giuliozelante.model;
+package it.giuliozelante.model.bracket;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -7,9 +7,8 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 
-public class Slot {
+public class PageInfo extends Base {
 
-    public String id;
-    public Entrant entrant;
+    public long total;
 
 }

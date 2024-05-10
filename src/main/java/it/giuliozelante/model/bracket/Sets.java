@@ -1,5 +1,5 @@
 
-package it.giuliozelante.model;
+package it.giuliozelante.model.bracket;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 public class Sets extends Base {
 
     public PageInfo pageInfo;
