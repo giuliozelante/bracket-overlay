@@ -6,7 +6,7 @@
   <body th:fragment="container">
     <ul>
       <li th:each="tournament: ${tournaments}">
-        <a hx-get="${tournament.link}"
+        <a th:href="${tournament.id}"
           ><span th:text="${tournament.name}"></span
         ></a>
       </li>

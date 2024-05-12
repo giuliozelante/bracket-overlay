@@ -3,18 +3,19 @@ package it.giuliozelante.controller;
 import java.io.IOException;
 import java.util.Map;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Produces;
-import io.micronaut.json.tree.JsonNode;
 import io.micronaut.scheduling.TaskExecutors;
 import io.micronaut.scheduling.annotation.ExecuteOn;
-import io.micronaut.serde.ObjectMapper;
 import io.micronaut.views.View;
 import it.giuliozelante.TournamentsByOwnerQuery;
 import it.giuliozelante.config.GraphQLConfig;
 import it.giuliozelante.factory.OkHttpClientFactory;
+import it.giuliozelante.model.tournament.Tournaments;
 import it.giuliozelante.model.tournament.TournamentsRequest;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
@@ -24,15 +25,20 @@ import okhttp3.Response;
 
 @Controller("tournaments")
 public class TournamentsController {
+    private static class GraphQLEndpointException extends RuntimeException {
+        public GraphQLEndpointException(String message) {
+            super(message);
+        }
+    }
+
     private final OkHttpClient okHttpClient;
-    // private final TemplateEngine templateEngine;
     private final GraphQLConfig config;
+
     private final ObjectMapper mapper;
 
     public TournamentsController(OkHttpClientFactory okHttpClientFactory,
             GraphQLConfig graphQLConfig, ObjectMapper mapper) {
         this.okHttpClient = okHttpClientFactory.okHttpClient();
-        // this.templateEngine = templateEngine;
         this.config = graphQLConfig;
         this.mapper = mapper;
     }
@@ -61,14 +67,22 @@ public class TournamentsController {
             Response response = call.execute();
 
             if (response.isSuccessful()) {
-                JsonNode node = mapper.readValue(response.body().string(), JsonNode.class);
+                String responseString = response.body().string();
+                Tournaments tournaments = mapper.readValue(responseString,
+                        Tournaments.class);
 
-                return Map.of("tournaments", node.get("tournaments").get(1).get("nodes"));
+                return Map.of("tournaments", tournaments.getData().getTournaments().getNodes());
             } else {
-                throw new RuntimeException("Failed to fetch data from GraphQL endpoint");
+                throw new GraphQLEndpointException("Failed to fetch data from GraphQL endpoint");
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new GraphQLIOException("Error communicating with GraphQL endpoint", e);
+        }
+    }
+
+    private static class GraphQLIOException extends RuntimeException {
+        public GraphQLIOException(String message, Throwable cause) {
+            super(message, cause);
         }
     }
 }

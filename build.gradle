@@ -21,6 +21,7 @@ dependencies {
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     implementation("io.micronaut.views:micronaut-views-thymeleaf")
     implementation("com.apollographql.apollo:apollo-runtime:2.5.14")
+    implementation("io.micronaut:micronaut-jackson-databind")
     compileOnly("io.micronaut:micronaut-http-client")
     compileOnly("org.projectlombok:lombok")
     runtimeOnly("ch.qos.logback:logback-classic")
