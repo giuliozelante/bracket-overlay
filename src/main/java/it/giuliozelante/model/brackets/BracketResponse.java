@@ -1,5 +1,5 @@
 
-package it.giuliozelante.model.bracket;
+package it.giuliozelante.model.brackets;
 
 import java.util.List;
 

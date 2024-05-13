@@ -1,8 +1,7 @@
 
-package it.giuliozelante.model.tournament;
+package it.giuliozelante.model.tournaments;
 
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -12,42 +11,26 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import io.micronaut.serde.annotation.Serdeable;
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "version",
-        "hints"
+        "id"
 })
 
-@Serdeable
-public class CacheControl {
+public class PhaseGroup {
 
-    @JsonProperty("version")
-    private Integer version;
-    @JsonProperty("hints")
-    private List<Hint> hints;
+    @JsonProperty("id")
+    private Integer id;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
-    @JsonProperty("version")
-    public Integer getVersion() {
-        return version;
+    @JsonProperty("id")
+    public Integer getId() {
+        return id;
     }
 
-    @JsonProperty("version")
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
-
-    @JsonProperty("hints")
-    public List<Hint> getHints() {
-        return hints;
-    }
-
-    @JsonProperty("hints")
-    public void setHints(List<Hint> hints) {
-        this.hints = hints;
+    @JsonProperty("id")
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     @JsonAnyGetter

@@ -4,6 +4,13 @@ query TournamentsByOwner($perPage: Int!, $ownerId: ID!) {
       id
       name
       slug
+      events(limit: $perPage) {
+        id
+        slug
+        phaseGroups {
+          id
+        }
+      }
     }
   }
 }

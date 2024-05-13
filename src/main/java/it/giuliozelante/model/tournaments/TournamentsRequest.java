@@ -1,4 +1,4 @@
-package it.giuliozelante.model.tournament;
+package it.giuliozelante.model.tournaments;
 
 import io.micronaut.core.annotation.ReflectiveAccess;
 import io.micronaut.serde.annotation.Serdeable;

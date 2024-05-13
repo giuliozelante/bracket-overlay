@@ -1,5 +1,5 @@
 
-package it.giuliozelante.model.tournament;
+package it.giuliozelante.model.brackets;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -12,19 +12,30 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import io.micronaut.serde.annotation.Serdeable;
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
+        "pageInfo",
         "nodes"
 })
-@Serdeable
-public class Tournaments__1 {
 
+public class Sets {
+
+    @JsonProperty("pageInfo")
+    private PageInfo pageInfo;
     @JsonProperty("nodes")
     private List<Node> nodes;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
+
+    @JsonProperty("pageInfo")
+    public PageInfo getPageInfo() {
+        return pageInfo;
+    }
+
+    @JsonProperty("pageInfo")
+    public void setPageInfo(PageInfo pageInfo) {
+        this.pageInfo = pageInfo;
+    }
 
     @JsonProperty("nodes")
     public List<Node> getNodes() {

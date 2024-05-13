@@ -4,11 +4,12 @@
     <title th:fragment="title">Home</title>
   </head>
   <body th:fragment="container">
-    <ul hx-boost="true">
+    <ul>
       <li th:each="tournament: ${tournaments}">
         <a
-          th:href="@{/bracket/__${tournament.events.get(0).id}__}"
-          th:text="${tournament.name}"
+          th:attr="hx-get=@{/bracket/{tournament.events.get(0).id}}"
+          hx-target="#container"
+          ><span th:text="${tournament.name}"></span
         ></a>
       </li>
     </ul>

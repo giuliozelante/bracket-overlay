@@ -12,6 +12,7 @@ import io.micronaut.http.annotation.Produces;
 import io.micronaut.scheduling.TaskExecutors;
 import io.micronaut.scheduling.annotation.ExecuteOn;
 import io.micronaut.views.View;
+import it.giuliozelante.PhaseGroupSetsQuery;
 import it.giuliozelante.TournamentsByOwnerQuery;
 import it.giuliozelante.config.GraphQLConfig;
 import it.giuliozelante.factory.OkHttpClientFactory;
@@ -24,7 +25,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 @Controller("tournaments")
-public class TournamentsController {
+public class BracketsController {
     private static class GraphQLEndpointException extends RuntimeException {
         public GraphQLEndpointException(String message) {
             super(message);
@@ -43,19 +44,19 @@ public class TournamentsController {
 
     private final ObjectMapper mapper;
 
-    public TournamentsController(OkHttpClientFactory okHttpClientFactory,
+    public BracketsController(OkHttpClientFactory okHttpClientFactory,
             GraphQLConfig graphQLConfig, ObjectMapper mapper) {
         this.okHttpClient = okHttpClientFactory.okHttpClient();
         this.config = graphQLConfig;
         this.mapper = mapper;
     }
 
-    @Get("")
-    @View("tournaments/home.html")
+    @Get("{eventId}")
+    @View("brackets/bracket.html")
     @Produces(MediaType.TEXT_HTML)
     @ExecuteOn(TaskExecutors.BLOCKING)
-    public Map<String, Object> findAll() {
-        TournamentsByOwnerQuery query = TournamentsByOwnerQuery.builder().ownerId("1802421").perPage(500).build();
+    public Map<String, Object> getBracket(Long eventId) {
+        PhaseGroupSetsQuery query = PhaseGroupSetsQuery.builder().phaseGroupId()ownerId("1802421").perPage(500).build();
         TournamentsRequest tr = new TournamentsRequest(500, 1802421L);
         Map<String, Object> bodyMap = Map.of("query", query.queryDocument().toString(), "variables", tr);
 

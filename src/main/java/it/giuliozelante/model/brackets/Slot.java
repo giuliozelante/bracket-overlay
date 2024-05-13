@@ -1,5 +1,5 @@
 
-package it.giuliozelante.model.tournament;
+package it.giuliozelante.model.brackets;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -11,28 +11,39 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import io.micronaut.serde.annotation.Serdeable;
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "tournaments"
+        "id",
+        "entrant"
 })
-@Serdeable
-public class Data {
 
-    @JsonProperty("tournaments")
-    private Tournaments__1 tournaments;
+public class Slot {
+
+    @JsonProperty("id")
+    private String id;
+    @JsonProperty("entrant")
+    private Object entrant;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
-    @JsonProperty("tournaments")
-    public Tournaments__1 getTournaments() {
-        return tournaments;
+    @JsonProperty("id")
+    public String getId() {
+        return id;
     }
 
-    @JsonProperty("tournaments")
-    public void setTournaments(Tournaments__1 tournaments) {
-        this.tournaments = tournaments;
+    @JsonProperty("id")
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @JsonProperty("entrant")
+    public Object getEntrant() {
+        return entrant;
+    }
+
+    @JsonProperty("entrant")
+    public void setEntrant(Object entrant) {
+        this.entrant = entrant;
     }
 
     @JsonAnyGetter

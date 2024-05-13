@@ -1,5 +1,5 @@
 
-package it.giuliozelante.model.bracket;
+package it.giuliozelante.model.tournaments;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -14,49 +14,50 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "path",
-        "maxAge",
-        "scope"
+        "id",
+        "slug",
+        "phaseGroups"
 })
-public class Hint extends Base {
 
-    @JsonProperty("path")
-    private List<String> path;
-    @JsonProperty("maxAge")
-    private Integer maxAge;
-    @JsonProperty("scope")
-    private String scope;
+public class Event {
+
+    @JsonProperty("id")
+    private Integer id;
+    @JsonProperty("slug")
+    private String slug;
+    @JsonProperty("phaseGroups")
+    private List<PhaseGroup> phaseGroups;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
-    @JsonProperty("path")
-    public List<String> getPath() {
-        return path;
+    @JsonProperty("id")
+    public Integer getId() {
+        return id;
     }
 
-    @JsonProperty("path")
-    public void setPath(List<String> path) {
-        this.path = path;
+    @JsonProperty("id")
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    @JsonProperty("maxAge")
-    public Integer getMaxAge() {
-        return maxAge;
+    @JsonProperty("slug")
+    public String getSlug() {
+        return slug;
     }
 
-    @JsonProperty("maxAge")
-    public void setMaxAge(Integer maxAge) {
-        this.maxAge = maxAge;
+    @JsonProperty("slug")
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 
-    @JsonProperty("scope")
-    public String getScope() {
-        return scope;
+    @JsonProperty("phaseGroups")
+    public List<PhaseGroup> getPhaseGroups() {
+        return phaseGroups;
     }
 
-    @JsonProperty("scope")
-    public void setScope(String scope) {
-        this.scope = scope;
+    @JsonProperty("phaseGroups")
+    public void setPhaseGroups(List<PhaseGroup> phaseGroups) {
+        this.phaseGroups = phaseGroups;
     }
 
     @JsonAnyGetter

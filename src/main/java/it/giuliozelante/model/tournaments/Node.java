@@ -1,7 +1,8 @@
 
-package it.giuliozelante.model.tournament;
+package it.giuliozelante.model.tournaments;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -11,16 +12,14 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import io.micronaut.serde.annotation.Serdeable;
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "id",
         "name",
-        "slug"
+        "slug",
+        "events"
 })
 
-@Serdeable
 public class Node {
 
     @JsonProperty("id")
@@ -29,6 +28,8 @@ public class Node {
     private String name;
     @JsonProperty("slug")
     private String slug;
+    @JsonProperty("events")
+    private List<Event> events;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
@@ -60,6 +61,16 @@ public class Node {
     @JsonProperty("slug")
     public void setSlug(String slug) {
         this.slug = slug;
+    }
+
+    @JsonProperty("events")
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    @JsonProperty("events")
+    public void setEvents(List<Event> events) {
+        this.events = events;
     }
 
     @JsonAnyGetter
