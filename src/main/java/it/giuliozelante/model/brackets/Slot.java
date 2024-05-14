@@ -22,7 +22,7 @@ public class Slot {
     @JsonProperty("id")
     private String id;
     @JsonProperty("entrant")
-    private Object entrant;
+    private Entrant entrant;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
@@ -37,12 +37,12 @@ public class Slot {
     }
 
     @JsonProperty("entrant")
-    public Object getEntrant() {
+    public Entrant getEntrant() {
         return entrant;
     }
 
     @JsonProperty("entrant")
-    public void setEntrant(Object entrant) {
+    public void setEntrant(Entrant entrant) {
         this.entrant = entrant;
     }
 

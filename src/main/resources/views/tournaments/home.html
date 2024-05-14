@@ -7,7 +7,7 @@
     <ul hx-boost="true">
       <li th:each="tournament: ${tournaments}">
         <a
-          th:href="@{/bracket/__${tournament.events.get(0).id}__}"
+          th:href="@{/brackets/__${tournament.events.get(0).phaseGroups.get(0).id}__}"
           th:text="${tournament.name}"
         ></a>
       </li>

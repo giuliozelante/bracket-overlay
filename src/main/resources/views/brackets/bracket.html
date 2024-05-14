@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
   <head>
-    <title th:fragment="title">Home</title>
+    <title th:fragment="title">Bracket</title>
   </head>
   <body th:fragment="container">
     <ul>
-      <li th:each="tournament: ${tournaments}">
-        <a
-          th:attr="hx-get=@{/bracket/{tournament.events.get(0).id}}"
-          hx-target="#container"
-          ><span th:text="${tournament.name}"></span
-        ></a>
+      <li th:each="bracket: ${brackets}">
+        <span
+          th:each="slot: ${bracket.slots}"
+          th:text="${slot.entrant.name}"
+        ></span>
       </li>
     </ul>
   </body>

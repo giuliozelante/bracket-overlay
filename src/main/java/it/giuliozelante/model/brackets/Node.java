@@ -21,19 +21,19 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class Node {
 
     @JsonProperty("id")
-    private String id;
+    private Integer id;
     @JsonProperty("slots")
     private List<Slot> slots;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
     @JsonProperty("id")
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
     @JsonProperty("id")
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

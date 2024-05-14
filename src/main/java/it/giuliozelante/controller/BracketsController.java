@@ -13,18 +13,16 @@ import io.micronaut.scheduling.TaskExecutors;
 import io.micronaut.scheduling.annotation.ExecuteOn;
 import io.micronaut.views.View;
 import it.giuliozelante.PhaseGroupSetsQuery;
-import it.giuliozelante.TournamentsByOwnerQuery;
 import it.giuliozelante.config.GraphQLConfig;
 import it.giuliozelante.factory.OkHttpClientFactory;
-import it.giuliozelante.model.tournaments.TournamentsByOwnerResponse;
-import it.giuliozelante.model.tournaments.TournamentsRequest;
+import it.giuliozelante.model.brackets.PhaseGroupSetsResponse;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-@Controller("tournaments")
+@Controller("brackets")
 public class BracketsController {
     private static class GraphQLEndpointException extends RuntimeException {
         public GraphQLEndpointException(String message) {
@@ -55,10 +53,10 @@ public class BracketsController {
     @View("brackets/bracket.html")
     @Produces(MediaType.TEXT_HTML)
     @ExecuteOn(TaskExecutors.BLOCKING)
-    public Map<String, Object> getBracket(Long eventId) {
-        PhaseGroupSetsQuery query = PhaseGroupSetsQuery.builder().phaseGroupId()ownerId("1802421").perPage(500).build();
-        TournamentsRequest tr = new TournamentsRequest(500, 1802421L);
-        Map<String, Object> bodyMap = Map.of("query", query.queryDocument().toString(), "variables", tr);
+    public Map<String, Object> getBracket(String eventId) {
+        PhaseGroupSetsQuery query = PhaseGroupSetsQuery.builder().phaseGroupId(eventId).page(1).perPage(500).build();
+        Map<String, Object> bodyMap = Map.of("query", query.queryDocument().toString(), "variables",
+                query.variables().valueMap());
 
         RequestBody body;
         try {
@@ -76,10 +74,10 @@ public class BracketsController {
 
             if (response.isSuccessful()) {
                 String responseString = response.body().string();
-                TournamentsByOwnerResponse tournaments = mapper.readValue(responseString,
-                        TournamentsByOwnerResponse.class);
+                PhaseGroupSetsResponse brackets = mapper.readValue(responseString,
+                        PhaseGroupSetsResponse.class);
 
-                return Map.of("tournaments", tournaments.getData().getTournaments().getNodes());
+                return Map.of("brackets", brackets.getData().getPhaseGroup().getSets().getNodes());
             } else {
                 throw new GraphQLEndpointException("Failed to fetch data from GraphQL endpoint");
             }
