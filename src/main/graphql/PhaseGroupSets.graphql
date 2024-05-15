@@ -5,14 +5,33 @@ query PhaseGroupSets($phaseGroupId: ID!, $page: Int!, $perPage: Int!) {
     sets(page: $page, perPage: $perPage, sortType: STANDARD) {
       pageInfo {
         total
+        totalPages
+        page
+        perPage
       }
       nodes {
         id
+        wPlacement
+        fullRoundText
+        round
         slots {
           id
+          slotIndex
+          standing {
+            stats {
+              score {
+                value
+              }
+            }
+          }
           entrant {
             id
             name
+            isDisqualified
+            standing {
+              placement
+            }
+            skill
           }
         }
       }

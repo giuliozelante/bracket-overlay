@@ -8,3 +8,8 @@ jackson:
 micronaut:
   application:
     name: bracket-overlay
+  router:
+    static-resources:
+      css:
+        mapping: /css/*.css
+        paths: classpath:static/css

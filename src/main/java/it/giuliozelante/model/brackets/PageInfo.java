@@ -4,41 +4,22 @@ package it.giuliozelante.model.brackets;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import lombok.EqualsAndHashCode;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-        "total"
-})
-
+@lombok.Data
+@EqualsAndHashCode(callSuper = false)
 public class PageInfo {
 
-    @JsonProperty("total")
-    private Integer total;
-    @JsonIgnore
+    public Integer total;
+    public Integer totalPages;
+    public Integer page;
+    public Integer perPage;
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
-    @JsonProperty("total")
-    public Integer getTotal() {
-        return total;
-    }
-
-    @JsonProperty("total")
-    public void setTotal(Integer total) {
-        this.total = total;
-    }
-
-    @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
     }
 
-    @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
     }

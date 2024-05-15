@@ -6,7 +6,7 @@ import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@Data
+@lombok.Data
 @EqualsAndHashCode(callSuper = false)
 public class BracketResponse extends Base {
 

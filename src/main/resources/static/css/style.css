@@ -1,0 +1,37 @@
+.tournament-tree {
+  display: flex;
+  justify-content: space-between; /* Distribute sets evenly */
+  .set {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.slot {
+  position: relative;
+}
+
+.entrant-name {
+  display: inline-block;
+  padding: 5px 10px; /* Adjust padding for entrant names */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.connector {
+  width: 50px; /* Adjust connector width */
+  height: 2px;
+  background-color: #ddd;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Style connectors for winners and losers based on your preference */
+.connector:nth-child(2) {
+  /* Style for winners' bracket connectors */
+}
+
+.connector:nth-child(3) {
+  /* Style for losers' bracket connectors */
+}

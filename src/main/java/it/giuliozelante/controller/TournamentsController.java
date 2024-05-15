@@ -57,7 +57,7 @@ public class TournamentsController {
     public Map<String, Object> findAll() {
         TournamentsByOwnerQuery query = TournamentsByOwnerQuery.builder().ownerId("1802421").perPage(500).build();
         TournamentsRequest tr = new TournamentsRequest(500, 1802421L);
-        Map<String, Object> bodyMap = Map.of("query", query.queryDocument().toString(), "variables", tr);
+        Map<String, Object> bodyMap = Map.of("query", query.queryDocument(), "variables", tr);
 
         RequestBody body;
         try {

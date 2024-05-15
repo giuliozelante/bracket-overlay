@@ -55,7 +55,7 @@ public class BracketsController {
     @ExecuteOn(TaskExecutors.BLOCKING)
     public Map<String, Object> getBracket(String eventId) {
         PhaseGroupSetsQuery query = PhaseGroupSetsQuery.builder().phaseGroupId(eventId).page(1).perPage(500).build();
-        Map<String, Object> bodyMap = Map.of("query", query.queryDocument().toString(), "variables",
+        Map<String, Object> bodyMap = Map.of("query", query.queryDocument(), "variables",
                 query.variables().valueMap());
 
         RequestBody body;

@@ -1,4 +1,12 @@
 {
   "java.configuration.updateBuildConfiguration": "interactive",
-  "java.compile.nullAnalysis.mode": "automatic"
+  "java.compile.nullAnalysis.mode": "automatic",
+  "graalvm.home": "g:\\graalvm-jdk-22_windows-x64_bin\\graalvm-jdk-22.0.1+8.1",
+  "graalvm.installations": [
+    "",
+    "g:\\graalvm-jdk-22_windows-x64_bin\\graalvm-jdk-22.0.1+8.1"
+  ],
+  "terminal.integrated.env.windows": {
+    "GRAALVM_HOME": "g:\\graalvm-jdk-22_windows-x64_bin\\graalvm-jdk-22.0.1+8.1"
+  }
 }

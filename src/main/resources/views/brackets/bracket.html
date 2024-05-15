@@ -2,15 +2,32 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
   <head>
     <title th:fragment="title">Bracket</title>
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body th:fragment="container">
-    <ul>
-      <li th:each="bracket: ${brackets}">
-        <span
-          th:each="slot: ${bracket.slots}"
-          th:text="${slot.entrant.name}"
-        ></span>
-      </li>
-    </ul>
+    <div class="tournament-tree">
+      <div
+        th:each="i : ${#numbers.sequence(brackets.size() - 1, 0, -1)}"
+        class="set"
+      >
+        <h2
+          th:text="|${brackets[i].fullRoundText} (Round ${brackets[i].round})|"
+        >
+          Full Round Text
+        </h2>
+        <div>
+          <div th:each="slot : ${brackets[i].slots}" class="slot">
+            <div
+              th:text="${slot.entrant.name} ? 'Empty Slot (' + ${slot.slotIndex} + ')' : ''"
+              class="entrant-name"
+            ></div>
+            <div
+              th:unless="${slot.entrant.standing.placement > 2}"
+              class="connector"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

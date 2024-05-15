@@ -8,9 +8,9 @@ import lombok.EqualsAndHashCode;
 
 @lombok.Data
 @EqualsAndHashCode(callSuper = false)
-public class Data {
+public class Standing__1 {
 
-    public PhaseGroup phaseGroup;
+    public Integer placement;
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
     public Map<String, Object> getAdditionalProperties() {
