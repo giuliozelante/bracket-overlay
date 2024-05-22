@@ -8,5 +8,8 @@
   ],
   "terminal.integrated.env.windows": {
     "GRAALVM_HOME": "g:\\graalvm-jdk-22_windows-x64_bin\\graalvm-jdk-22.0.1+8.1"
+  },
+  "terminal.integrated.env.linux": {
+    "GRAALVM_HOME": "g:\\graalvm-jdk-22_windows-x64_bin\\graalvm-jdk-22.0.1+8.1"
   }
 }

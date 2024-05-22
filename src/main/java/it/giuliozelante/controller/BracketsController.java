@@ -1,6 +1,7 @@
 package it.giuliozelante.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,6 +16,7 @@ import io.micronaut.views.View;
 import it.giuliozelante.PhaseGroupSetsQuery;
 import it.giuliozelante.config.GraphQLConfig;
 import it.giuliozelante.factory.OkHttpClientFactory;
+import it.giuliozelante.model.brackets.Node;
 import it.giuliozelante.model.brackets.PhaseGroupSetsResponse;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
@@ -77,7 +79,26 @@ public class BracketsController {
                 PhaseGroupSetsResponse brackets = mapper.readValue(responseString,
                         PhaseGroupSetsResponse.class);
 
-                return Map.of("brackets", brackets.getData().getPhaseGroup().getSets().getNodes());
+                // Create an empty Map to store grouped sets
+                Map<String, List<Node>> groupedSets = new java.util.HashMap<>();
+                List<Node> reversedNodes = brackets.getData().getPhaseGroup().getSets()
+                        .getNodes().reversed();
+
+                // Loop through fetched nodes (matches)
+                for (Node node : reversedNodes) {
+                    String fullRoundText = node.getFullRoundText();
+
+                    // If group doesn't exist, create a new list for it
+                    if (!groupedSets.containsKey(fullRoundText)) {
+                        groupedSets.put(fullRoundText, new java.util.ArrayList<>());
+                    }
+
+                    // Add the current setNode to the corresponding group
+                    groupedSets.get(fullRoundText).add(node);
+                }
+
+                // Now you have grouped data in the 'groupedSets' Map
+                return Map.of("brackets", groupedSets);
             } else {
                 throw new GraphQLEndpointException("Failed to fetch data from GraphQL endpoint");
             }
